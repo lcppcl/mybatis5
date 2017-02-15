@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties"/>   <!-- 引入数据库的资源文件 -->
+
+	<typeAliases>
+		<package name="com.java.model"/>  <!-- 按类的名字取类取别名 -->
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">  <!-- 开发环境 ，测试环境-->
+			<transactionManager type="JDBC" /><!-- 事务管理 ：支持JDBC和MANAGED（托管）-->
+			<dataSource type="POOLED"><!-- 数据源用的是连接池 -->
+				<property name="driver" value="${jdbc.driverClassName}" />  <!-- jdbc.properties这里面的取值 -->
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment> 
+	</environments>
+	
+	<mappers>  <!-- 映射器 -->
+		<package name="com.java.mappers"/> <!-- 扫描所有类的映射文件 -->
+	</mappers>
+</configuration>
